@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
@@ -51,22 +52,28 @@ fun RestaurantName(name: String, size: Int){
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.White)
+            .background(Color(0xFF495E57))
             .padding(10.dp),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
+        verticalArrangement = Arrangement.Top,
+        horizontalAlignment = Alignment.Start
     ) {
         Text(
             text = name,
             fontSize = size.sp,
-            color = Color(0xFFF4CE14)
+            color = Color(0xFFF4CE14),
+            modifier = Modifier.padding(start = 20.dp, top = 20.dp)
         )
         Text(
             text = stringResource(id = R.string.chicago),
-            fontSize = size.sp,
-            color = Color(0xFFF4CE14)
+            fontSize = 24.sp,
+            color = Color(0XFFFFFFFF),
+            modifier = Modifier.padding(start = 20.dp)
         )
-        Row() {
+        Row(
+            Modifier.fillMaxSize(),
+            horizontalArrangement = Arrangement.Center,
+
+        ) {
             Button(
                 onClick = { /*TODO*/ },
                 border = BorderStroke(1.dp,Color.Red),
@@ -76,6 +83,11 @@ fun RestaurantName(name: String, size: Int){
             ) {
                 Text(text = stringResource(id = R.string.order))
             }
+            Image(
+                painter = painterResource(id = R.drawable.burger),
+                contentDescription = "",
+                Modifier.height(100.dp)
+            )
         }
     }
 }
