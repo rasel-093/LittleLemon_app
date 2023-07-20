@@ -1,6 +1,8 @@
 package com.example.littlelemon
 
+import android.content.Context
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.BorderStroke
@@ -26,6 +28,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -42,7 +45,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    RestaurantName(name = stringResource(id = R.string.title), size = 32)
+                    UpperPanel(name = stringResource(id = R.string.title), size = 32)
                 }
 
         }
@@ -50,7 +53,8 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun RestaurantName(name: String, size: Int){
+fun UpperPanel(name: String, size: Int){
+    val context = LocalContext.current
     //Column layout
     Column(
         verticalArrangement = Arrangement.Top,
@@ -58,6 +62,7 @@ fun RestaurantName(name: String, size: Int){
         modifier = Modifier
             .fillMaxWidth()
             .background(Color(0xFF495E57))
+            .padding(10.dp)
     ) {
         Text(
             text = name,
@@ -91,7 +96,9 @@ fun RestaurantName(name: String, size: Int){
             )
         }
         Button(
-            onClick = { /*TODO*/ },
+            onClick = {
+                      Toast.makeText(context,"Order Successful",Toast.LENGTH_SHORT).show()
+            },
             border = BorderStroke(1.dp,Color.Red),
             shape = RoundedCornerShape(10.dp),
             colors = ButtonDefaults.
@@ -104,6 +111,6 @@ fun RestaurantName(name: String, size: Int){
 @Preview
 @Composable
 fun RestaurantNameView(){
-    RestaurantName(name = stringResource(id = R.string.title), size = 32)
+    UpperPanel(name = stringResource(id = R.string.title), size = 32)
 }
 
