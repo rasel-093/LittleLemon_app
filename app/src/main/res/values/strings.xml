@@ -4,4 +4,7 @@
     <string name="chicago">Chicago</string>
     <string name="order">Order</string>
     <string name="description_one">We are family owned mediterranean,focused on tradition recipes served with a moder twist</string>
+    <string name="weekly_special">Weekly Special</string>
+    <string name="greek_salad">Greek Salad</string>
+    <string name="greek_salad_description">The famous Greek salad of crispy lettuce, peppers, olives, our Chicago ...</string>
 </resources>

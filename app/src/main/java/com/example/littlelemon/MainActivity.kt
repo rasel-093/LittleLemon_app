@@ -41,76 +41,14 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    UpperPanel(name = stringResource(id = R.string.title), size = 32)
-                }
-
+            HomeScreen()
         }
     }
 }
-
 @Composable
-fun UpperPanel(name: String, size: Int){
-    val context = LocalContext.current
-    //Column layout
-    Column(
-        verticalArrangement = Arrangement.Top,
-        horizontalAlignment = Alignment.Start,
-        modifier = Modifier
-            .fillMaxWidth()
-            .background(Color(0xFF495E57))
-            .padding(10.dp)
-    ) {
-        Text(
-            text = name,
-            fontSize = size.sp,
-            color = Color(0xFFF4CE14),
-            modifier = Modifier.padding(start = 20.dp, top = 20.dp)
-        )
-        Text(
-            text = stringResource(id = R.string.chicago),
-            fontSize = 24.sp,
-            color = Color(0XFFFFFFFF),
-            modifier = Modifier.padding(start = 20.dp)
-        )
-        Row(
-            Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.Start,
-        ) {
-            Text(
-                text = stringResource(id = R.string.description_one),
-                modifier = Modifier
-                    .width(200.dp),
-                color = Color.White,
-                fontSize = 21.sp
-            )
-            Image(
-                painter = painterResource(id = R.drawable.burger),
-                contentDescription = "",
-                Modifier
-                    .height(100.dp)
-                    .clip(RoundedCornerShape(20.dp))
-            )
-        }
-        Button(
-            onClick = {
-                      Toast.makeText(context,"Order Successful",Toast.LENGTH_SHORT).show()
-            },
-            border = BorderStroke(1.dp,Color.Red),
-            shape = RoundedCornerShape(10.dp),
-            colors = ButtonDefaults.
-            buttonColors(Color(0xFFF4CE14))
-        ) {
-            Text(text = stringResource(id = R.string.order))
-        }
+fun HomeScreen(){
+    Column {
+        UpperPanel()
+        LowerPanel()
     }
 }
-@Preview
-@Composable
-fun RestaurantNameView(){
-    UpperPanel(name = stringResource(id = R.string.title), size = 32)
-}
-
