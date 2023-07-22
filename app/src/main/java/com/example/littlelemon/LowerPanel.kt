@@ -21,6 +21,7 @@ fun LowerPanel() {
     Column {
         WeeklySpecial()
         MenuDish()
+        ItemOrder()
     }
 }
 
