@@ -32,10 +32,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun ItemOrder(){
-    var count by rememberSaveable() {
-        mutableStateOf(0)
-    }
+fun ItemOrder(count : Int, onIncreement: () -> Unit, onDecreement: () -> Unit){
     Column(
         modifier = Modifier.fillMaxWidth(),
         verticalArrangement = Arrangement.Center,
@@ -58,7 +55,7 @@ fun ItemOrder(){
                 horizontalArrangement = Arrangement.Center,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                IconButton(onClick = { count-- }) {
+                IconButton(onClick = {onDecreement()}) {
                     androidx.compose.material3.Icon(
                         imageVector = Icons.Default.Delete,
                         contentDescription = "Remove")
@@ -69,7 +66,7 @@ fun ItemOrder(){
                     fontSize = 32.sp,
                     fontWeight = FontWeight.Bold
                 )
-                IconButton(onClick = { count++ }) {
+                IconButton(onClick = {onIncreement()}) {
                     androidx.compose.material3.Icon(
                         imageVector = Icons.Default.Add,
                         contentDescription = "Add" )
@@ -84,5 +81,5 @@ fun ItemOrder(){
 @Preview
 @Composable
 fun ItemOrderPreview(){
-    ItemOrder()
+    //ItemOrder()
 }
